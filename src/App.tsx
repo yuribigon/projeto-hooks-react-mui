@@ -12,7 +12,7 @@ function App() {
       {/* <MuiLayout/> */}
       {/* <MuiTextField/> */}
       {/* <Desafio/> */}
-      <MuiHooks/>
+      {/* <MuiHooks/> */}
     </div>
   );
 }
