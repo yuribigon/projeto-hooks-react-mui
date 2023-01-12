@@ -15,3 +15,23 @@ export const theme = createTheme({
       }
     }
   });
+
+  export const themeSec = createTheme({
+    palette:{
+      secondary: {
+        main: "#f44336",
+      },
+      primary:{
+        main: "#009688",
+      }
+    },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 576,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+      },
+    },
+  });
