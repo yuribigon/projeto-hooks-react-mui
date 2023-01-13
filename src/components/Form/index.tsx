@@ -8,6 +8,7 @@ const Form: React.FC = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [id, setId] = useState(0);
 
     //localStorage
     const saveLocal = (paramsGrowdevers: Growdever[]) => {
@@ -28,8 +29,8 @@ const Form: React.FC = () => {
     const handleGrowdever = () => {
 
         if (name != "" || email != "" || phone != "") { //validação
-
-            let growdever: Growdever = { name, email, phone } // monto o objeto
+            setId(id+1)
+            let growdever: Growdever = { name, email, phone, id } // monto o objeto
             growdevers.push(growdever); // coloco o objeto dentro do vetor [{nome, email, telefone}]
             setGrowdevers(growdevers); // mudo o estado do vetor
 

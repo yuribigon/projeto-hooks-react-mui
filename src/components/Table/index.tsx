@@ -1,25 +1,21 @@
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Growdever from '../../types/growdevers';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
+export interface ITableProps {
+    growdevers:Growdever[],
+    setGrowdevers:React.Dispatch<React.SetStateAction<Growdever[]>>
+}
 
-
-const TableContacts: React.FC = () => {
-
-    //estados
-    const [growdevers, setGrowdevers] = useState<Growdever[]>([]);
-
-    //localStorage    
-    const loadLocal = () => {
-        const db = localStorage.getItem("DBgrowdevers");
-        return db !== null ? JSON.parse(db) : [];
+const TableContacts = ({growdevers,setGrowdevers}:ITableProps) => {
+   
+    //>>>>>>>>>>>BOTÃO REMOVER - NÃO ESTÁ FUNCIONANDO <<<<<<<<<<
+    const handleDelete = (id:number) =>{
+        const index = growdevers.findIndex((el)=>el.id === id);
+        setGrowdevers(growdevers.splice(index, 1));
     }
-
-    const handleGrowdevers = () => {
-        setGrowdevers(loadLocal)
-    }
-
-    useEffect(() => { handleGrowdevers(); }, []);
 
     return (
         <React.Fragment>
@@ -40,6 +36,10 @@ const TableContacts: React.FC = () => {
                                     <TableCell>{element.name}</TableCell>
                                     <TableCell>{element.email}</TableCell>
                                     <TableCell>{element.phone}</TableCell>
+                                    <TableCell>
+                                        <Button><EditIcon/></Button>
+                                        <Button onClick={()=>handleDelete(index)}><DeleteIcon/></Button>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
